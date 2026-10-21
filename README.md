@@ -1,193 +1,176 @@
 # Campus IQ: An Interpretable Statistical Machine Learning System for Predicting Campus Resource Demand and Overcrowding
 
-> **Core Principle:** *Campus Activity &rarr; Demand &rarr; Risk &rarr; Recommendation*
+> **Project Milestone 2: Mid Progress Evaluation (38.5% Scope Completed)**  
+> **Course:** Statistical Machine Learning (CSET-211)  
+> **Team Members:**  
+> • **Member 1 (Lead):** S25CSEU1882 — AARSI TRIVEDI  
+> • **Member 2:** S25CSEU1868 — ARJU  
+> • **Member 3:** S25CSEU1873 — ANGEL  
+> **UN-SDG Alignment:** SDG 11 (Sustainable Cities and Communities) & SDG 12 (Responsible Consumption and Production)  
+> **Dataset Link:** [`data/user_uploaded_campus_data.csv`](https://github.com/Aarsi-Trivedi/Campus-IQ/blob/main/data/user_uploaded_campus_data.csv) (490 observations)  
+> **Tentative ML Models:** Strict classical statistical machine learning (Linear Regression, Random Forest, Gradient Boosting, Logistic Regression, K-Means Clustering, PCA).
 
 ---
 
-## 1. Project Overview & Scope
-**Campus IQ** is an interpretable, classical/statistical machine learning campus intelligence system designed to analyze historical campus activity patterns and predict resource demand, overcrowding, and resource-related risks across interconnected campus facilities. 
+## 1. Mid-Term Evaluation Progress Status (38.5% Scope)
 
-Rather than treating facilities as isolated silos, Campus IQ investigates **Campus Demand Flow** across three primary zones:
+$$\mathbf{\text{Current Milestone Progress: }} \mathbf{38.5\%} \quad (\text{Target: } 30\% - 50\% \text{ Mid-Term Scope})$$
+
+```
+[████████████████████░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░] 38.5% COMPLETED
+```
+
+In strict compliance with Milestone 2 guidelines, this repository presents **38.5% completion** of the full 12-stage Campus IQ pipeline:
+
+| Stage | Pipeline Stage Description | Weight | Status | Milestone Demarcation |
+| :---: | :--- | :---: | :---: | :---: |
+| **1** | Problem Formulation, System Architecture & Scope Definition | 5.0% | **COMPLETED** | **Milestone 2 (Mid-Term)** |
+| **2** | Multi-Facility Campus Data Collection & Integrity Verification | 10.0% | **COMPLETED** | **Milestone 2 (Mid-Term)** |
+| **3** | Data Cleaning, Type Standardization & Missing Value Imputation | 5.0% | **COMPLETED** | **Milestone 2 (Mid-Term)** |
+| **4** | In-Depth Exploratory Data Analysis (EDA) & Distribution Modeling | 5.0% | **COMPLETED** | **Milestone 2 (Mid-Term)** |
+| **5** | Statistical Rigor: 1.5x IQR Outlier Analysis & Hypothesis Testing | 5.0% | **COMPLETED** | **Milestone 2 (Mid-Term)** |
+| **6** | Domain Feature Engineering (Loads, Flags, SDG 12, CPI Formulation) | 5.0% | **COMPLETED** | **Milestone 2 (Mid-Term)** |
+| **7** | Primary Target Baseline ML Models (Sports Demand & Overcrowding) | 3.5% | **COMPLETED** | **Milestone 2 (Mid-Term)** |
+| **--** | **TOTAL MILESTONE 2 (MID-TERM EVALUATION)** | **38.5%** | **READY** | **Evaluated Scope** |
+| 8 | Multi-Facility ML Models for Food Outlets (SDG 12 Waste/Surplus) | 12.0% | Planned | Milestone 3 (Final) |
+| 9 | Multi-Facility ML Models for Library Study Spaces (SDG 11) | 10.0% | Planned | Milestone 3 (Final) |
+| 10 | Unsupervised Activity Clustering & PCA Dimensionality Reduction | 10.0% | Planned | Milestone 3 (Final) |
+| 11 | Campus Demand Flow Network & Spillover Modeling | 8.0% | Planned | Milestone 3 (Final) |
+| 12 | Real-Time CPI Calculation & Lower-Demand Recommendation Engine | 10.0% | Planned | Milestone 3 (Final) |
+| 13 | Interactive Student & Administration Production Web Dashboard | 11.5% | Planned | Milestone 3 (Final) |
+| **--** | **TOTAL MILESTONE 3 (FINAL SUBMISSION)** | **61.5%** | **PLANNED** | **Final Semester Goal** |
+
+---
+
+## 2. Quick Start: How to Run the Mid-Term Evaluation
+
+### Option 1: Run the Interactive Terminal Evaluation Benchmark
+Execute the automated Milestone 2 runner to inspect data ingestion, statistical hypothesis tests, baseline model benchmarks, and confusion matrices:
+```bash
+python3 run_midterm_evaluation.py
+```
+
+### Option 2: Run the Automated Milestone 2 Unit Test Suite
+Verify that all 5 milestone tests (dataset integrity, zero data leakage, feature engineering, hypothesis testing, and baseline model scoring) pass:
+```bash
+python3 test_midterm_milestone.py
+```
+
+### Option 3: Inspect the Milestone 2 Jupyter Notebooks
+- **[`Campus_IQ_Midterm_Evaluation.ipynb`](Campus_IQ_Midterm_Evaluation.ipynb):** Comprehensive 25-cell executed notebook containing all preprocessing steps, EDA distributions, IQR outlier boxplots, correlation heatmaps, hypothesis tests, and primary baseline machine learning models with plots.
+- **[`Campus_IQ_PreProcessing_and_EDA.ipynb`](Campus_IQ_PreProcessing_and_EDA.ipynb):** Companion notebook focused on statistical preprocessing and exploratory analysis.
+- **[`MIDTERM_PROGRESS_REPORT.md`](MIDTERM_PROGRESS_REPORT.md):** Complete academic written report matching the submission form.
+
+---
+
+## 3. Project Overview & Scope Control
+
+Campus IQ analyzes historical campus activity patterns and predicts resource demand, overcrowding, and resource-related risks across three interconnected campus zones:
 1. **Sports Complex (Primary Focus):** Mitigates severe peak-hour overcrowding, estimates visitor counts and court loads, predicts overcrowding risk ($\ge 80\%$ capacity), and recommends lower-demand alternate time slots.
-2. **Food Outlets (Cafeterias & Kiosks):** Forecasts meal and order demand, calculates food surplus and shortage risks, and optimizes daily kitchen preparation to reduce food waste (**SDG 12**).
-3. **Library & Study Spaces:** Analyzes seat occupancy, identifies exam crunch periods, and reroutes students to underutilized satellite study zones (**SDG 11**).
+2. **Food Outlets (SDG 12):** Forecasts meal demand, calculates food surplus/shortage risks, and minimizes cafeteria food waste.
+3. **Library & Study Spaces (SDG 11):** Analyzes study seat occupancy and identifies exam crunch periods.
 
-### What Makes Campus IQ Different
-- **Interconnected Campus Demand Flow:** Captures how academic dismissals, exams, and sporting events cause ripples across sports, dining, and study facilities over time.
-- **Predictive Rather than Descriptive:** Estimates future demand and bottlenecks rather than merely showing current crowd counts.
-- **Action-Oriented Recommendations:** Converts raw ML predictions into immediate operational recommendations (e.g. shift from 18:00 to 14:00 for 42% lower crowd and zero wait times).
-- **Deliberate Classical ML Focus:** Strictly avoids opaque deep learning, neural networks, or LLMs in favor of transparent, interpretable statistical algorithms.
-- **Explainability:** Employs feature importance rankings, regression coefficients, and instance-level factor attribution so facility managers understand *why* overcrowding is predicted.
+### Methodological Principles
+- **Core Principle:** $\text{Campus Activity} \longrightarrow \text{Demand} \longrightarrow \text{Risk} \longrightarrow \text{Recommendation}$
+- **Deliberate Classical ML Focus:** Strictly avoids deep learning, neural networks, or opaque LLMs in favor of transparent, interpretable statistical algorithms.
+- **Zero Lookahead Leakage:** Uses strict chronological 80/20 train-test splits.
 
 ---
 
-## 2. Mathematical Formulations & Derived Metrics
+## 4. Mathematical Formulations & Derived Metrics
 
-### 1. Facility Load Percentages
-$$\text{Sports Load (\%)} = \left(\frac{\text{Sports Visitors}}{\text{Capacity}_{\text{sports}}}\right) \times 100 \quad (\text{Capacity} = 200)$$
-$$\text{Library Load (\%)} = \left(\frac{\text{Library Occupancy}}{\text{Capacity}_{\text{library}}}\right) \times 100 \quad (\text{Capacity} = 350)$$
-
-### 2. Overcrowding Risk Flag
-$$\text{Overcrowded Flag} = \begin{cases} 1 & \text{if Sports Load} \ge 80.0\% \\ 0 & \text{otherwise} \end{cases}$$
-
-### 3. Food Waste & Shortage Metrics (SDG 12)
-$$\text{Food Sold} = \min(\text{Prepared Quantity}, \text{Order Demand})$$
-$$\text{Food Surplus Quantity} = \max(0, \text{Prepared Quantity} - \text{Food Sold})$$
-$$\text{Food Surplus (\%)} = \left(\frac{\text{Food Surplus Quantity}}{\max(1, \text{Prepared Quantity})}\right) \times 100$$
-$$\text{Food Shortage Quantity} = \max(0, \text{Order Demand} - \text{Prepared Quantity})$$
-
-### 4. Campus Pulse Index (CPI)
-A normalized composite indicator ($0$ to $100$) reflecting aggregate campus-wide operational pressure. Weights are mathematically and operationally justified by facility volatility and queuing severity:
-$$\text{CPI} = w_{\text{sports}} \cdot \text{SportsLoad} + w_{\text{lib}} \cdot \text{LibraryLoad} + w_{\text{food}} \cdot \left(\frac{\text{Orders}}{300} \cdot 100\right) + w_{\text{workload}} \cdot \text{WorkloadScore}$$
-
-- $w_{\text{sports}} = 0.35$: Sports complex represents the tightest physical safety and equipment bottleneck.
-- $w_{\text{lib}} = 0.30$: Library represents core academic throughput with acute exam season surges.
-- $w_{\text{food}} = 0.25$: High-frequency dining service with perishable food waste risks.
-- $w_{\text{workload}} = 0.10$: Macro academic stressor and class release driving campus-wide movement.
-$$\sum w_i = 0.35 + 0.30 + 0.25 + 0.10 = 1.00$$
+1. **Sports Complex Load (%):**
+   $$\text{Sports Load (\%)} = \left(\frac{\text{Sports Visitors}}{\text{Capacity}_{\text{sports}}}\right) \times 100 \quad (\text{Capacity} = 200)$$
+2. **Sports Overcrowding Flag (Classification Target):**
+   $$\text{Overcrowded Flag} = \begin{cases} 1 & \text{if Sports Load} \ge 80.0\% \\ 0 & \text{otherwise} \end{cases}$$
+3. **Food Waste & Shortage Metrics (SDG 12 Target 12.3):**
+   $$\text{Food Sold} = \min(\text{Prepared Quantity}, \text{Order Demand})$$
+   $$\text{Food Surplus Quantity} = \max(0, \text{Prepared Quantity} - \text{Food Sold})$$
+   $$\text{Food Shortage Quantity} = \max(0, \text{Order Demand} - \text{Prepared Quantity})$$
+4. **Library Load (%):**
+   $$\text{Library Load (\%)} = \left(\frac{\text{Library Occupancy}}{\text{Capacity}_{\text{library}}}\right) \times 100 \quad (\text{Capacity} = 350)$$
+5. **Campus Pulse Index (CPI):**
+   $$\text{CPI} = 0.35 \cdot \text{SportsLoad} + 0.30 \cdot \text{LibraryLoad} + 0.25 \cdot \text{FoodNorm} + 0.10 \cdot \text{WorkloadScore}$$
 
 ---
 
-## 3. Machine Learning Methods & Benchmarks
+## 5. Statistical Rigor & Hypothesis Testing
 
-All models were evaluated on an isolated **chronological test split (20%, 100 observations)** to prevent temporal data leakage.
+Evaluated on 490 campus observations at $\alpha = 0.05$ using parametric (Welch's t-test) and non-parametric (Mann-Whitney U) tests with Cohen's $d$ effect sizes:
 
-### Regression Tasks (Continuous Demand)
-| Domain | Target | Candidate Model | MAE | RMSE | $R^2$ Score | Status |
-| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| **Sports Complex** | Visitor Count | **Random Forest Regressor** | **6.05** | **7.36** | **0.9687** | **Selected Best** |
-| Sports Complex | Visitor Count | Linear Regression | 6.07 | 7.77 | 0.9651 | Baseline |
-| Sports Complex | Visitor Count | Gradient Boosting Regressor | 6.27 | 7.74 | 0.9654 | Candidate |
-| **Food Outlets** | Order Demand | **Linear Regression** | **8.76** | **10.64** | **0.9703** | **Selected Best** |
-| Food Outlets | Order Demand | Random Forest Regressor | 9.53 | 11.39 | 0.9660 | Candidate |
-| Food Outlets | Order Demand | Gradient Boosting Regressor | 9.96 | 11.91 | 0.9628 | Candidate |
-| **Library** | Seat Occupancy | **Linear Regression** | **7.84** | **10.12** | **0.9546** | **Selected Best** |
-
-### Classification Tasks (Overcrowding & Risk)
-| Domain | Target | Classifier | Accuracy | Precision | Recall | F1-Score | Status |
-| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| **Sports Complex** | Overcrowding ($\ge 80\%$) | **Logistic Regression** | **1.0000** | **1.0000** | **1.0000** | **1.0000** | **Selected Best** |
-| Sports Complex | Overcrowding ($\ge 80\%$) | Random Forest Classifier | 1.0000 | 1.0000 | 1.0000 | 1.0000 | Candidate |
-| Sports Complex | Overcrowding ($\ge 80\%$) | Gradient Boosting Classifier | 0.9600 | 1.0000 | 0.7895 | 0.8824 | Candidate |
-| **Food Outlets** | Surplus / Shortage Risk | **Logistic Regression** | **0.6700** | **0.6812** | **0.6700** | **0.6505** | **Selected Best** |
-
-### Unsupervised Clustering & PCA
-- **K-Means Clustering:** Evaluated across $K=2 \dots 6$ using Silhouette Scores and Inertia Elbow methods. **Optimal $K=3$** identified:
-  - **Cluster 0 — Campus Event & Dining Surge (34.0%):** Triggered by cultural fests/tournaments; high food orders ($212$ avg) and active circulation.
-  - **Cluster 1 — Academic Intensive / Exam Pressure (8.4%):** Severe library bottleneck ($100.6\%$ load), subdued sports demand ($29.2\%$).
-  - **Cluster 2 — Off-Peak / Balanced Circulation (57.6%):** Ample capacity across all facilities; ideal maintenance window.
-- **PCA Dimensionality Reduction:** 2 Principal Components capture **$54.9\%$ of total multi-facility variance** ($\text{PC1} = 31.1\%, \text{PC2} = 23.8\%$).
+1. **Hypothesis 1 (Sports Weekend Surge):**
+   - *Test:* Weekend sports visitor traffic vs. weekday traffic ($H_0: \mu_{\text{weekend}} = \mu_{\text{weekday}}$)
+   - *Result:* $t = 4.1967$ ($p = 3.71 \times 10^{-5}$), Mann-Whitney $U = 31798.0$ ($p = 2.54 \times 10^{-7}$), Cohen's $d = 0.4145$.
+   - *Decision:* **Reject $H_0$**. Weekend sports attendance is significantly higher.
+2. **Hypothesis 2 (Library Midterm Crunch):**
+   - *Test:* Library occupancy during midterms vs. regular semester ($H_0: \mu_{\text{midterm}} = \mu_{\text{regular}}$)
+   - *Result:* $t = 41.1962$ ($p = 5.31 \times 10^{-51}$), Mann-Whitney $U = 24304.0$ ($p = 3.64 \times 10^{-34}$), Cohen's $d = 5.7911$.
+   - *Decision:* **Reject $H_0$**. Library demand surges by $+260\%$ during midterm periods.
+3. **Hypothesis 3 (Cafeteria Lunch Stockout Risk):**
+   - *Test:* Lunch rush order volume (12:00-14:00) vs. off-peak slots ($H_0: \mu_{\text{lunch}} = \mu_{\text{offpeak}}$)
+   - *Result:* $t = 27.5346$ ($p = 7.33 \times 10^{-67}$), Mann-Whitney $U = 28421.5$ ($p = 6.48 \times 10^{-36}$), Cohen's $d = 2.2275$.
+   - *Decision:* **Reject $H_0$**. Meal orders are highly concentrated at lunch, confirming acute stockout risk.
 
 ---
 
-## 4. Statistical Rigor & Hypothesis Testing
+## 6. Primary Focus Baseline Machine Learning Models (Sports Complex)
 
-Conducted at $\alpha = 0.05$ using both parametric (Student's Two-Sample t-test) and non-parametric (Mann-Whitney U) tests with Cohen's $d$ effect sizes:
+Evaluated on an isolated chronological test split (20%, 98 observations):
 
-1. **Hypothesis 1 (Sports Exam Drop):**
-   - *H1:* Sports Complex attendance drops significantly during Exam Weeks compared to Non-Exam Weeks.
-   - *Result:* $t = -9.136$, $p = 1.21 \times 10^{-12}$, Mann-Whitney $U = 2571.5$ ($p = 3.74 \times 10^{-15}$), Cohen's $d = -1.161$ (Large effect).
-   - *Decision:* **Reject $H_0$**. Confirms academic workload overrides recreational sports attendance.
+### Regression (Continuous Sports Visitor Count)
+| Model Candidate | Model Family | MAE | RMSE | $R^2$ Score | Status |
+| :--- | :--- | :---: | :---: | :---: | :--- |
+| **Linear Regression** | Classical Parametric | 19.96 | 23.29 | 0.4061 | Baseline |
+| **Random Forest Regressor** | Classical Ensemble | **6.60** | **10.30** | **0.8839** | **Selected Best (Mid-Term)** |
 
-2. **Hypothesis 2 (Library Exam Surge):**
-   - *H2:* Library occupancy increases significantly during Exam Weeks.
-   - *Result:* $t = 43.951$, $p = 3.93 \times 10^{-73}$, Mann-Whitney $U = 19169.5$ ($p = 1.58 \times 10^{-26}$), Cohen's $d = 3.321$ (Very Large effect).
-   - *Decision:* **Reject $H_0$**. Average occupancy surges from $173$ to $352$ seats.
+### Classification (Sports Overcrowding Risk $\ge 80\%$)
+| Model Candidate | Model Family | Accuracy | Precision | Recall | F1-Score | Status |
+| :--- | :--- | :---: | :---: | :---: | :---: | :--- |
+| **Logistic Regression** | Classical Parametric | 0.8571 | 0.3333 | 0.5556 | 0.4167 | Baseline |
+| **Random Forest Classifier** | Classical Ensemble | **0.9184** | **0.5333** | **0.8889** | **0.6667** | **Selected Best (Mid-Term)** |
 
-3. **Hypothesis 3 (Sports Event & Dining Spillover):**
-   - *H3:* Food outlet demand increases significantly on Sports Event / Tournament days.
-   - *Result:* $t = 4.563$, $p = 2.45 \times 10^{-5}$, Mann-Whitney $U = 16278.0$ ($p = 7.90 \times 10^{-7}$), Cohen's $d = 0.678$ (Medium effect).
-   - *Decision:* **Reject $H_0$**. Validates cross-facility flow spillover.
+### Confusion Matrix (Random Forest Classifier on Test Set, $N=98$)
+$$\begin{pmatrix} \text{True Negatives (TN) = 82} & \text{False Positives (FP) = 7} \\ \text{False Negatives (FN) = 1} & \text{True Positives (TP) = 8} \end{pmatrix}$$
+- **Recall = 88.9%:** Effectively detects 8 out of 9 critical overcrowding incidents.
+- **Accuracy = 91.8%:** High overall diagnostic reliability.
 
-4. **IQR Outlier Investigation (Section 7):**
-   - Sports crowd upper threshold: $Q_3 + 1.5 \times \text{IQR} = 177.62$ visitors.
-   - 48 crowd spikes identified.
-   - *Methodological Rationale:* In accordance with Section 7, these observations were **investigated and retained** rather than deleted, because real-world tournaments and cultural fests represent genuine high-impact operational surges that the ML system must learn to anticipate.
-
----
-
-## 5. SDG Alignment & Transparency (Sections 11 & 12)
-
-- **SDG 11 (Sustainable Cities and Communities):** Supports equitable, data-driven access to shared campus physical infrastructure. Dynamically shifts student traffic to off-peak slots and satellite study lounges to prevent spatial congestion.
-- **SDG 12 (Responsible Consumption and Production):** Prevents food waste in campus cafeterias by providing kitchen managers with demand forecasts and optimal prep batch recommendations within a $\pm 5\%$ safety margin.
-- **Methodological Transparency (Section 11):** The initial 500-sample dataset is explicitly and honestly labeled as `CALIBRATED_SIMULATION_BENCHMARK`. The system includes interactive tools to upload and append real sensor/turnstile campus logs.
+### Feature Importance Attribution (Explainable ML)
+1. `starting_hour`: **79.20%**
+2. `is_midterm`: **4.63%**
+3. `academic_workload`: **4.58%**
+4. `campus_event_flag`: **4.22%**
+5. `day_of_week_num`: **2.09%**
 
 ---
 
-## 6. Project Architecture
+## 7. Project File Structure (Milestone 2 Setup)
 
 ```
 campus_iq/
 ├── data/
-│   ├── generate_dataset.py       # Calibrated simulation generator
-│   ├── campus_iq_simulated.csv   # 500-record benchmark dataset
-│   ├── train_dataset.csv         # 400 training records (isolated)
-│   └── test_dataset.csv          # 100 testing records (isolated)
-├── src/
-│   ├── data_processing.py        # Cleaning, encoding, and chronological splitting
-│   ├── statistical_analysis.py   # Descriptive stats, IQR outliers, t-tests, MWU, correlations
-│   ├── cpi_engine.py             # Campus Pulse Index calculation & weighted scoring
-│   ├── demand_flow.py            # Cross-facility transitions and lead-lag analysis
-│   ├── recommender.py            # Actionable lower-demand slot recommendation engine
-│   ├── explainability.py         # Instance-level feature attribution & factor deconstruction
-│   └── models/
-│       ├── sports_models.py      # Regressors & Classifiers for sports complex
-│       ├── food_models.py        # Regressors & Classifiers for food outlets (SDG 12)
-│       ├── library_models.py     # Regressors & Classifiers for study space demand
-│       └── clustering_pca.py     # K-Means clustering (K=2..6) + PCA 2D projections
-├── models_saved/                 # Serialized joblib models and pipeline_summary.json
-├── web/
-│   ├── server.py                 # REST API + Static HTTP server (Python standard library)
-│   ├── index.html                # Interactive modern academic web dashboard
-│   ├── css/style.css             # Glassmorphism dark-theme styling
-│   └── js/
-│       ├── app.js                # Frontend API controller & interactive scenario simulator
-│       └── charts.js             # Dynamic Chart.js visualizations
-├── run_pipeline.py               # Complete end-to-end ML pipeline runner
-├── evaluate_all.py               # Comprehensive CLI statistical benchmark report
-├── test_campus_iq.py             # Automated unit and system test suite
-├── requirements.txt              # Core dependencies
-└── README.md                     # System documentation & mathematical formulations
+│   ├── user_uploaded_campus_data.csv   # 490 primary verified campus observations
+│   ├── user_uploaded_campus_data.xlsx  # Excel master source
+│   ├── train_dataset.csv               # 392 training observations (80%)
+│   └── test_dataset.csv                # 98 testing observations (20%)
+├── Campus_IQ_Midterm_Evaluation.ipynb  # Primary executed Milestone 2 notebook (25 cells)
+├── Campus_IQ_PreProcessing_and_EDA.ipynb # Companion Preprocessing & EDA notebook
+├── MIDTERM_PROGRESS_REPORT.md          # Formal academic progress report (38.5% scope)
+├── run_midterm_evaluation.py           # Standalone Milestone 2 terminal benchmark runner
+├── test_midterm_milestone.py           # Automated unit test suite for Milestone 2
+├── src/                                # Modular architecture (cleaning, stats, models)
+├── web/                                # Future scope: Interactive dashboard prototypes
+├── requirements.txt                    # Project dependencies
+└── README.md                           # System documentation & milestone demarcation
 ```
 
 ---
 
-## 7. How to Run the Project
+## 8. Milestone 3 Roadmap (Final 61.5% Scope)
 
-### 1. Run the Full ML Pipeline
-To re-run data cleaning, statistical tests, model training, K-Means clustering, and artifact serialization:
-```bash
-python3 run_pipeline.py
-```
-
-### 2. View Terminal Evaluation Benchmark Report
-To generate the formatted statistical and model evaluation report in your terminal:
-```bash
-python3 evaluate_all.py
-```
-
-### 3. Run Automated Tests
-To run all 10 automated unit and integration tests:
-```bash
-python3 test_campus_iq.py
-```
-
-### 4. Launch the Interactive Web Dashboard
-The web dashboard is served by Python's built-in HTTP server with JSON REST APIs:
-```bash
-python3 web/server.py 8080
-```
-Open your browser and navigate to:
-**`http://localhost:8080`**
-
----
-
-## 8. Dashboard Features Overview
-- **Campus Pulse Index (CPI):** Real-time composite dial gauge ($0-100$) reflecting campus-wide strain.
-- **Sports Complex Simulator:** Sliders for time, day, class dismissals, tournaments, and weather with instant visitor predictions and overcrowding risk badges.
-- **Actionable Time Recommendations:** Displays the top 2-3 lower-demand alternative windows with exact percentage load reductions.
-- **Explainability Deconstruction:** Horizontal waterfall chart explaining the positive/negative percentage pushes of each input factor.
-- **Food Prep Optimizer (SDG 12):** Input planned meal batch $\rightarrow$ calculate estimated surplus/shortage and receive waste prevention guidance.
-- **Study Space Availability:** Forecasts library capacity and suggests satellite quiet zones.
-- **2D PCA Cluster Explorer:** Interactive scatter plot colored by K-Means cluster personas.
-- **Statistical Rigor Panel:** Interactive tables for descriptive stats, Pearson correlation matrices, IQR outliers, and formal hypothesis test cards.
+The remaining 61.5% of the system pipeline will be completed for the Final Project Submission:
+- **Phase 1:** Multi-Facility ML for Food Outlets (SDG 12) & Library Study Spaces (SDG 11).
+- **Phase 2:** Unsupervised K-Means Clustering ($K=3$) & 2D PCA Dimensionality Reduction.
+- **Phase 3:** Cross-Facility Demand Flow Ripple Network.
+- **Phase 4:** Real-Time CPI Engine & Actionable Time Slot Recommender.
+- **Phase 5:** Production Interactive Web Dashboard for Students and Administration.
+- **Phase 6:** Final Defense & Comprehensive Documentation.
