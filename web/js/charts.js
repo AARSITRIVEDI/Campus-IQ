@@ -509,3 +509,135 @@ function initGlobalImportanceChart(featImportances) {
     }
   });
 }
+
+// ==============================================================================
+// CAMPUS TIME MACHINE MAIN DASHBOARD CHART (With 6 PM Peak Callout Badge)
+// ==============================================================================
+function initTimeMachineMainChart(period = 'today') {
+  if (typeof Chart === 'undefined') { console.warn('Chart.js is not loaded'); return; }
+  const ctx = document.getElementById('timeMachineMainChart');
+  if (!ctx) return;
+  if (chartRegistry.timeMachineMain) {
+    try { chartRegistry.timeMachineMain.destroy(); } catch (e) {}
+  }
+
+  const labels = ['8 AM', '12 PM', '3 PM', '6 PM', '9 PM'];
+  let dataPoints = [48, 98, 95, 178, 105];
+
+  if (period === 'tomorrow') {
+    dataPoints = [42, 85, 110, 162, 90];
+  } else if (period === 'compare') {
+    dataPoints = [55, 115, 120, 192, 110];
+  }
+
+  const chartCtx = ctx.getContext('2d');
+  const gradient = chartCtx.createLinearGradient(0, 0, 0, 180);
+  gradient.addColorStop(0, 'rgba(139, 92, 246, 0.45)');
+  gradient.addColorStop(0.6, 'rgba(139, 92, 246, 0.15)');
+  gradient.addColorStop(1, 'rgba(139, 92, 246, 0.0)');
+
+  // Callout plugin for 6 PM peak indicator badge
+  const calloutPlugin = {
+    id: 'peakCallout',
+    afterDatasetsDraw(chart) {
+      const { ctx } = chart;
+      const meta = chart.getDatasetMeta(0);
+      if (!meta || !meta.data || !meta.data[3]) return;
+
+      const peakPoint = meta.data[3]; // 6 PM
+      const x = peakPoint.x;
+      const y = peakPoint.y - 12;
+
+      ctx.save();
+      ctx.font = 'bold 11px Plus Jakarta Sans, sans-serif';
+      const text1 = '6 PM';
+      const text2 = '178 visitors';
+      const badgeW = 75;
+      const badgeH = 28;
+
+      ctx.fillStyle = '#141b2d';
+      ctx.beginPath();
+      if (ctx.roundRect) {
+        ctx.roundRect(x - badgeW / 2, y - badgeH - 4, badgeW, badgeH, 6);
+      } else {
+        ctx.rect(x - badgeW / 2, y - badgeH - 4, badgeW, badgeH);
+      }
+      ctx.fill();
+      ctx.strokeStyle = '#334155';
+      ctx.lineWidth = 1;
+      ctx.stroke();
+
+      ctx.fillStyle = '#ffffff';
+      ctx.textAlign = 'center';
+      ctx.fillText(text1, x, y - badgeH + 8);
+      ctx.font = '500 10px Plus Jakarta Sans, sans-serif';
+      ctx.fillStyle = '#c4b5fd';
+      ctx.fillText(text2, x, y - badgeH + 20);
+
+      // Downward pointer arrow
+      ctx.fillStyle = '#141b2d';
+      ctx.beginPath();
+      ctx.moveTo(x - 5, y - 4);
+      ctx.lineTo(x + 5, y - 4);
+      ctx.lineTo(x, y + 1);
+      ctx.closePath();
+      ctx.fill();
+
+      ctx.restore();
+    }
+  };
+
+  chartRegistry.timeMachineMain = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: labels,
+      datasets: [
+        {
+          label: 'Campus Activity',
+          data: dataPoints,
+          borderColor: '#8b5cf6',
+          backgroundColor: gradient,
+          borderWidth: 3,
+          tension: 0.45,
+          fill: true,
+          pointBackgroundColor: '#8b5cf6',
+          pointBorderColor: '#ffffff',
+          pointBorderWidth: 2,
+          pointRadius: [4, 4, 4, 7, 4],
+          pointHoverRadius: 8
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          backgroundColor: '#141b2d',
+          titleColor: '#ffffff',
+          bodyColor: '#c4b5fd',
+          padding: 8,
+          cornerRadius: 6
+        }
+      },
+      scales: {
+        x: {
+          grid: { display: false },
+          ticks: { color: '#94a3b8', font: { family: 'Plus Jakarta Sans', size: 11, weight: '600' } }
+        },
+        y: {
+          min: 0,
+          max: 200,
+          ticks: {
+            stepSize: 50,
+            color: '#94a3b8',
+            font: { family: 'Plus Jakarta Sans', size: 10 }
+          },
+          grid: { color: 'rgba(0, 0, 0, 0.04)' }
+        }
+      }
+    },
+    plugins: [calloutPlugin]
+  });
+}

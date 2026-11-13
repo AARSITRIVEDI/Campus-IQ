@@ -1,6 +1,6 @@
 # Campus IQ: An Interpretable Statistical Machine Learning System for Predicting Campus Resource Demand and Overcrowding
 
-> **Project Milestone 2: Mid Progress Evaluation (38.5% Scope Completed)**  
+> **Project Milestone 2: Mid Progress Evaluation (50.0% Scope Completed)**  
 > **Course:** Statistical Machine Learning (CSET-211)  
 > **Team Members:**  
 > • **Member 1 (Lead):** S25CSEU1882 — AARSI TRIVEDI  
@@ -12,33 +12,30 @@
 
 ---
 
-## 1. Mid-Term Evaluation Progress Status (38.5% Scope)
+## 1. Mid-Term Evaluation Progress Status (50.0% Scope)
 
-$$\mathbf{\text{Current Milestone Progress: }} \mathbf{38.5\%} \quad (\text{Target: } 30\% - 50\% \text{ Mid-Term Scope})$$
+$$\mathbf{\text{Current Milestone Progress: }} \mathbf{50.0\%} \quad (\text{Phase 1 Complete} \mid \text{Target: } 30\% - 50\% \text{ Mid-Term Scope})$$
 
 ```
-[████████████████████░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░] 38.5% COMPLETED
+[█████████████████████████░░░░░░░░░░░░░░░░░░░░░░░░░] 50.0% COMPLETED
 ```
 
-In strict compliance with Milestone 2 guidelines, this repository presents **38.5% completion** of the full 12-stage Campus IQ pipeline:
+In strict compliance with Milestone 2 guidelines, Phase 1 has reached complete **50.0% delivery**, with the remaining advanced modules scheduled for Milestone 3:
 
 | Stage | Pipeline Stage Description | Weight | Status | Milestone Demarcation |
 | :---: | :--- | :---: | :---: | :---: |
-| **1** | Problem Formulation, System Architecture & Scope Definition | 5.0% | **COMPLETED** | **Milestone 2 (Mid-Term)** |
-| **2** | Multi-Facility Campus Data Collection & Integrity Verification | 10.0% | **COMPLETED** | **Milestone 2 (Mid-Term)** |
-| **3** | Data Cleaning, Type Standardization & Missing Value Imputation | 5.0% | **COMPLETED** | **Milestone 2 (Mid-Term)** |
-| **4** | In-Depth Exploratory Data Analysis (EDA) & Distribution Modeling | 5.0% | **COMPLETED** | **Milestone 2 (Mid-Term)** |
-| **5** | Statistical Rigor: 1.5x IQR Outlier Analysis & Hypothesis Testing | 5.0% | **COMPLETED** | **Milestone 2 (Mid-Term)** |
-| **6** | Domain Feature Engineering (Loads, Flags, SDG 12, CPI Formulation) | 5.0% | **COMPLETED** | **Milestone 2 (Mid-Term)** |
-| **7** | Primary Target Baseline ML Models (Sports Demand & Overcrowding) | 3.5% | **COMPLETED** | **Milestone 2 (Mid-Term)** |
-| **--** | **TOTAL MILESTONE 2 (MID-TERM EVALUATION)** | **38.5%** | **READY** | **Evaluated Scope** |
-| 8 | Multi-Facility ML Models for Food Outlets (SDG 12 Waste/Surplus) | 12.0% | Planned | Milestone 3 (Final) |
-| 9 | Multi-Facility ML Models for Library Study Spaces (SDG 11) | 10.0% | Planned | Milestone 3 (Final) |
-| 10 | Unsupervised Activity Clustering & PCA Dimensionality Reduction | 10.0% | Planned | Milestone 3 (Final) |
-| 11 | Campus Demand Flow Network & Spillover Modeling | 8.0% | Planned | Milestone 3 (Final) |
-| 12 | Real-Time CPI Calculation & Lower-Demand Recommendation Engine | 10.0% | Planned | Milestone 3 (Final) |
-| 13 | Interactive Student & Administration Production Web Dashboard | 11.5% | Planned | Milestone 3 (Final) |
-| **--** | **TOTAL MILESTONE 3 (FINAL SUBMISSION)** | **61.5%** | **PLANNED** | **Final Semester Goal** |
+| **1** | Problem Formulation, System Architecture & Multi-Facility Scope | 10.0% | **COMPLETED** | **Milestone 2 (Mid-Term)** |
+| **2** | Multi-Facility Campus Data Collection & Audit (490 obs) | 10.0% | **COMPLETED** | **Milestone 2 (Mid-Term)** |
+| **3** | Data Cleaning, Temporal Preprocessing & Imputation | 10.0% | **COMPLETED** | **Milestone 2 (Mid-Term)** |
+| **4** | Statistical Rigor: Descriptive Stats, 1.5x IQR & Hypothesis Tests | 10.0% | **COMPLETED** | **Milestone 2 (Mid-Term)** |
+| **5** | Feature Engineering & Primary Baseline ML Models (Sports) | 10.0% | **COMPLETED** | **Milestone 2 (Mid-Term)** |
+| **--** | **TOTAL MILESTONE 2 (MID-TERM EVALUATION)** | **50.0%** | **PHASE 1 COMPLETE** | **Evaluated Scope** |
+| 6 | Multi-Facility ML Models for Food Outlets (SDG 12 Waste/Surplus) | 10.0% | Planned | Milestone 3 (Final) |
+| 7 | Multi-Facility ML Models for Library Study Spaces (SDG 11) | 10.0% | Planned | Milestone 3 (Final) |
+| 8 | Unsupervised Activity Clustering & PCA Dimensionality Reduction | 10.0% | Planned | Milestone 3 (Final) |
+| 9 | Campus Demand Flow Network & Spillover Modeling | 10.0% | Planned | Milestone 3 (Final) |
+| 10 | Real-Time CPI Calculation & Production Interactive Dashboard | 10.0% | Planned | Milestone 3 (Final) |
+| **--** | **TOTAL MILESTONE 3 (FINAL SUBMISSION)** | **50.0%** | **PLANNED** | **Final Semester Goal** |
 
 ---
 

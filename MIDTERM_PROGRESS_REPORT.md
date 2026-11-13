@@ -1,5 +1,5 @@
 # Project Milestone 2: Statistical Machine Learning (CSET-211)
-## Mid Progress Report: Campus IQ (38.5% Completion Scope)
+## Mid Progress Report: Campus IQ (50.0% Completion Scope)
 
 > **Submission Form Reference:** `Project_Milestone 2_Statistical Machine Learning(CSET-211)-Mid Progress Report`  
 > **Course:** CSET-211: Statistical Machine Learning  
@@ -26,31 +26,28 @@
 ## 2. Milestone 2 Progress Status & Scope Demarcation
 
 ### Milestone Completion Metric
-$$\mathbf{\text{Current Milestone Progress: }} \mathbf{38.5\%} \quad (\text{Target: } 30\% - 50\% \text{ Mid-Term Scope})$$
+$$\mathbf{\text{Current Milestone Progress: }} \mathbf{50.0\%} \quad (\text{Phase 1 Complete} \mid \text{Target: } 30\% - 50\% \text{ Mid-Term Scope})$$
 
 ```
-[████████████████████░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░] 38.5% COMPLETED
+[█████████████████████████░░░░░░░░░░░░░░░░░░░░░░░░░] 50.0% COMPLETED
 ```
 
-### 12-Stage Pipeline Progress Audit
+### System Pipeline Progress Audit (50% Milestone 2 vs 50% Milestone 3)
 
 | Stage | Pipeline Stage Description | Weight | Status | Milestone Demarcation |
 | :---: | :--- | :---: | :---: | :---: |
-| **1** | Problem Formulation, System Architecture & Scope Definition | 5.0% | **COMPLETED** | **Milestone 2 (Mid-Term)** |
-| **2** | Multi-Facility Campus Data Collection & Integrity Verification | 10.0% | **COMPLETED** | **Milestone 2 (Mid-Term)** |
-| **3** | Data Cleaning, Type Standardization & Missing Value Imputation | 5.0% | **COMPLETED** | **Milestone 2 (Mid-Term)** |
-| **4** | In-Depth Exploratory Data Analysis (EDA) & Distribution Modeling | 5.0% | **COMPLETED** | **Milestone 2 (Mid-Term)** |
-| **5** | Statistical Rigor: 1.5x IQR Outlier Analysis & Hypothesis Testing | 5.0% | **COMPLETED** | **Milestone 2 (Mid-Term)** |
-| **6** | Domain Feature Engineering (Loads, Flags, SDG 12, CPI Formulation) | 5.0% | **COMPLETED** | **Milestone 2 (Mid-Term)** |
-| **7** | Primary Target Baseline ML Models (Sports Demand & Overcrowding) | 3.5% | **COMPLETED** | **Milestone 2 (Mid-Term)** |
-| **--** | **TOTAL MILESTONE 2 (MID-TERM EVALUATION)** | **38.5%** | **READY** | **Evaluated Scope** |
-| 8 | Multi-Facility ML Models for Food Outlets (SDG 12 Waste/Surplus) | 12.0% | Planned | Milestone 3 (Final) |
-| 9 | Multi-Facility ML Models for Library Study Spaces (SDG 11) | 10.0% | Planned | Milestone 3 (Final) |
-| 10 | Unsupervised Activity Clustering & PCA Dimensionality Reduction | 10.0% | Planned | Milestone 3 (Final) |
-| 11 | Campus Demand Flow Network & Spillover Modeling | 8.0% | Planned | Milestone 3 (Final) |
-| 12 | Real-Time CPI Calculation & Lower-Demand Recommendation Engine | 10.0% | Planned | Milestone 3 (Final) |
-| 13 | Interactive Student & Administration Production Web Dashboard | 11.5% | Planned | Milestone 3 (Final) |
-| **--** | **TOTAL MILESTONE 3 (FINAL SUBMISSION)** | **61.5%** | **PLANNED** | **Final Semester Goal** |
+| **1** | Problem Formulation, System Architecture & Multi-Facility Scope | 10.0% | **COMPLETED** | **Milestone 2 (Mid-Term)** |
+| **2** | Multi-Facility Campus Data Collection & Audit (490 obs) | 10.0% | **COMPLETED** | **Milestone 2 (Mid-Term)** |
+| **3** | Data Cleaning, Temporal Preprocessing & Imputation | 10.0% | **COMPLETED** | **Milestone 2 (Mid-Term)** |
+| **4** | Statistical Rigor: Descriptive Stats, 1.5x IQR & Hypothesis Tests | 10.0% | **COMPLETED** | **Milestone 2 (Mid-Term)** |
+| **5** | Feature Engineering & Primary Baseline ML Models (Sports) | 10.0% | **COMPLETED** | **Milestone 2 (Mid-Term)** |
+| **--** | **TOTAL MILESTONE 2 (MID-TERM EVALUATION)** | **50.0%** | **PHASE 1 COMPLETE** | **Evaluated Scope** |
+| 6 | Multi-Facility ML Models for Food Outlets (SDG 12 Waste/Surplus) | 10.0% | Planned | Milestone 3 (Final) |
+| 7 | Multi-Facility ML Models for Library Study Spaces (SDG 11) | 10.0% | Planned | Milestone 3 (Final) |
+| 8 | Unsupervised Activity Clustering & PCA Dimensionality Reduction | 10.0% | Planned | Milestone 3 (Final) |
+| 9 | Campus Demand Flow Network & Spillover Modeling | 10.0% | Planned | Milestone 3 (Final) |
+| 10 | Real-Time CPI Calculation & Production Interactive Dashboard | 10.0% | Planned | Milestone 3 (Final) |
+| **--** | **TOTAL MILESTONE 3 (FINAL SUBMISSION)** | **50.0%** | **PLANNED** | **Final Semester Goal** |
 
 ---
 

@@ -28,7 +28,7 @@ DATA_FILE = os.path.join(BASE_DIR, "data", "user_uploaded_campus_data.csv")
 def print_banner():
     print("\n" + "=" * 82)
     print("      CAMPUS IQ: STATISTICAL MACHINE LEARNING (CSET-211) — MILESTONE 2")
-    print("                     MID-TERM PROGRESS EVALUATION (38% SCOPE)")
+    print("                     MID-TERM PROGRESS EVALUATION (50% SCOPE)")
     print("=" * 82)
     print(" Course:       CSET-211: Statistical Machine Learning")
     print(" Milestone:    Milestone 2 — Mid Progress Report (Target: 30% - 50% Completion)")
@@ -39,9 +39,9 @@ def print_banner():
     print(" UN-SDG Goals: SDG 11 (Sustainable Cities) & SDG 12 (Responsible Consumption)")
     print(" Dataset:      https://github.com/Aarsi-Trivedi/Campus-IQ/blob/main/data/user_uploaded_campus_data.csv")
     print("-" * 82)
-    print(" MILESTONE PROGRESS: [████████████████████░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░] 38.5% COMPLETED")
-    print("   • Stages 1-5 (Completed for Mid-Term): Data Ingestion, Cleaning, EDA, Stats, Baseline ML")
-    print("   • Stages 6-12 (Planned for Final Milestone 3): Food/Library ML, K-Means+PCA, Recommender, Web UI")
+    print(" MILESTONE PROGRESS: [█████████████████████████░░░░░░░░░░░░░░░░░░░░░░░░░] 50.0% COMPLETED")
+    print("   • Phase 1 (Completed for Mid-Term): Data Ingestion, Cleaning, EDA, Stats, Baseline ML")
+    print("   • Phase 2 (Planned for Final Milestone 3): Food/Library ML, K-Means+PCA, Recommender, Web UI")
     print("=" * 82)
 
 def run_evaluation():
@@ -257,19 +257,17 @@ def run_evaluation():
     print("  {:<6} {:<45} {:<15} {:<10}".format("Stage", "Pipeline Component", "Status", "Progress"))
     print("  " + "-" * 78)
     stages = [
-        ("1", "Problem Formulation & Scope Definition", "COMPLETED", "5.0%"),
-        ("2", "Data Collection & Integrity Validation (490 obs)", "COMPLETED", "10.0%"),
-        ("3", "Data Cleaning & Temporal Preprocessing", "COMPLETED", "5.0%"),
+        ("1", "Problem Formulation, Architecture & Scope Definition", "COMPLETED", "10.0%"),
+        ("2", "Multi-Facility Data Collection & Audit (490 obs)", "COMPLETED", "10.0%"),
+        ("3", "Data Cleaning, Temporal Preprocessing & Imputation", "COMPLETED", "10.0%"),
         ("4", "Exploratory Data Analysis & Hypothesis Testing", "COMPLETED", "10.0%"),
-        ("5", "Feature Engineering (Loads, Flags, CPI)", "COMPLETED", "5.0%"),
-        ("6", "Primary Baseline ML (Sports Reg & Clf)", "COMPLETED", "3.5%"),
-        ("--", "CURRENT MILESTONE 2 TOTAL", "MID-TERM COMPLETE", "38.5%"),
-        ("7", "Food Outlets Demand & Waste ML (SDG 12)", "PLANNED (M3)", "12.0%"),
-        ("8", "Library Occupancy ML (SDG 11)", "PLANNED (M3)", "10.0%"),
-        ("9", "Unsupervised Activity Clustering (K-Means+PCA)", "PLANNED (M3)", "10.0%"),
-        ("10", "Campus Demand Flow Transition Network", "PLANNED (M3)", "8.0%"),
-        ("11", "Real-Time CPI & Actionable Recommender Engine", "PLANNED (M3)", "10.0%"),
-        ("12", "Interactive Web Dashboard & Student Portal", "PLANNED (M3)", "11.5%"),
+        ("5", "Feature Engineering & Primary Baseline ML (Sports)", "COMPLETED", "10.0%"),
+        ("--", "CURRENT MILESTONE 2 TOTAL", "PHASE 1 COMPLETE", "50.0%"),
+        ("6", "Food Outlets Demand & Waste ML (SDG 12)", "PLANNED (M3)", "10.0%"),
+        ("7", "Library Occupancy ML (SDG 11)", "PLANNED (M3)", "10.0%"),
+        ("8", "Unsupervised Activity Clustering (K-Means+PCA)", "PLANNED (M3)", "10.0%"),
+        ("9", "Campus Demand Flow Transition Network", "PLANNED (M3)", "10.0%"),
+        ("10", "Real-Time CPI Engine, Recommender & Interactive UI", "PLANNED (M3)", "10.0%"),
         ("--", "MILESTONE 3 / FINAL SUBMISSION TOTAL", "FINAL GOAL", "100.0%")
     ]
     for st, name, status, pct in stages:
