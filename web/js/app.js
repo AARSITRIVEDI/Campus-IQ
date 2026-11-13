@@ -109,7 +109,7 @@ function updateTimeDisplay() {
     let timeGreeting = 'Good Evening';
     if (hr < 12) timeGreeting = 'Good Morning';
     else if (hr < 17) timeGreeting = 'Good Afternoon';
-    greetingTitle.innerHTML = ;
+    greetingTitle.innerHTML = timeGreeting + ', Aarsi! 👋';
   }
 }
 
