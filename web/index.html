@@ -9,67 +9,55 @@
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <script src="js/chart.umd.min.js"></script>
-  <link rel="stylesheet" href="css/style.css?v=7.0">
+  <link rel="stylesheet" href="css/style.css?v=8.0">
 </head>
 <body>
 
   <!-- ==============================================================================
-       1. TOP NAVBAR (SEARCH & CONTROLS)
+       1. TOP NAVBAR (SEARCH & BRAND CONTROLS - NO LOGIN/SIGNUP NEEDED)
        ============================================================================== -->
   <header class="top-navbar">
-    <div class="search-pill-box">
-      <i class="fa-solid fa-magnifying-glass"></i>
-      <input type="text" class="search-pill-input" id="global-search-input" placeholder="Search anything... (⌘K)">
-      <span class="search-shortcut-badge">⌘K</span>
+    <div class="top-nav-left">
+      <!-- Portal Brand Logo & Title -->
+      <div class="top-nav-brand" onclick="switchTab('tab-dashboard')" title="Campus IQ Home Dashboard">
+        <div class="brand-icon-box">
+          <i class="fa-solid fa-graduation-cap"></i>
+        </div>
+        <div class="brand-text">
+          <span class="brand-title">Campus<strong>IQ</strong></span>
+          <span class="brand-subtitle">Smart Resource Telemetry</span>
+        </div>
+      </div>
+
+      <!-- Global Search Pill -->
+      <div class="search-pill-box">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" class="search-pill-input" id="global-search-input" placeholder="Search facilities, models, metrics... (⌘K)">
+        <span class="search-shortcut-badge">⌘K</span>
+      </div>
     </div>
 
     <div class="top-nav-right">
+      <!-- Live Telemetry Status Pill -->
+      <div class="nav-status-chip" title="Real-time campus telemetry stream active">
+        <span class="live-dot-pulsing"></span>
+        <span>Telemetry Live</span>
+      </div>
+
+      <!-- Quick Refresh Button -->
+      <button class="nav-refresh-btn" id="btn-header-refresh" onclick="refreshDashboardData()" title="Refresh live telemetry">
+        <i class="fa-solid fa-arrows-rotate"></i>
+        <span>Refresh</span>
+      </button>
+
       <!-- Dark/Light Theme Toggle Switch -->
       <div class="theme-toggle-pill" id="theme-toggle-btn" title="Toggle Light / Dark Mode">
         <div class="theme-toggle-slider" id="theme-toggle-slider">
           <i class="fa-solid fa-sun" id="theme-toggle-icon"></i>
         </div>
       </div>
-
-      <!-- Notification Bell with Unread Badge -->
-      <button class="notif-btn" id="btn-notifications" title="Campus Alerts (2 Unread)">
-        <i class="fa-regular fa-bell"></i>
-        <span class="notif-badge">2</span>
-      </button>
-
-      <!-- User Profile Badge (Aarsi Trivedi) -->
-      <div class="user-avatar-pill" id="btn-user-profile" title="Aarsi Trivedi — Student Dashboard">
-        AT
-      </div>
     </div>
   </header>
-
-  <!-- ==============================================================================
-       2. HERO GREETING BANNER & CAMPUS ARCHITECTURE PANORAMA
-       ============================================================================== -->
-  <section class="hero-greeting-container">
-    <div class="greeting-text-wrap">
-      <div class="greeting-badge-row">
-        <span class="live-status-chip">
-          <span class="live-dot-pulsing"></span> Campus IQ &bull; Live Telemetry
-        </span>
-        <span class="sdg-mini-chip sdg-11-chip" title="Aligned with UN SDG 11: Sustainable Cities & Communities">
-          <i class="fa-solid fa-city"></i> SDG 11
-        </span>
-        <span class="sdg-mini-chip sdg-12-chip" title="Aligned with UN SDG 12: Responsible Consumption & Waste Reduction">
-          <i class="fa-solid fa-infinity"></i> SDG 12
-        </span>
-      </div>
-      <h1 id="greeting-title">Good Evening, Aarsi! 👋</h1>
-      <p class="greeting-sub">Here's your real-time campus activity, congestion forecasts, and study space availability.</p>
-    </div>
-
-    <!-- Campus Panorama Illustration with Smooth Contrast Mask -->
-    <div class="campus-panorama-box">
-      <img src="images/building_clean.png" alt="Campus Architecture" class="campus-panorama-bg">
-      <div class="panorama-gradient-overlay"></div>
-    </div>
-  </section>
 
   <!-- ==============================================================================
        MULTI-FEATURE NAVIGATION BAR (CORE CAMPUS HUB & PROJECT DETAILS)
@@ -124,6 +112,31 @@
          ============================================================================== -->
     <section id="tab-dashboard" class="tab-pane active">
 
+      <!-- Hero Greeting Banner & Campus Architecture Panorama -->
+      <div class="hero-greeting-container">
+        <div class="greeting-text-wrap">
+          <div class="greeting-badge-row">
+            <span class="live-status-chip">
+              <span class="live-dot-pulsing"></span> Real-Time Campus Intelligence
+            </span>
+            <span class="sdg-mini-chip sdg-11-chip" title="Aligned with UN SDG 11: Sustainable Cities & Communities">
+              <i class="fa-solid fa-city"></i> SDG 11
+            </span>
+            <span class="sdg-mini-chip sdg-12-chip" title="Aligned with UN SDG 12: Responsible Consumption & Waste Reduction">
+              <i class="fa-solid fa-infinity"></i> SDG 12
+            </span>
+          </div>
+          <h1 id="greeting-title">Welcome to Campus IQ 👋</h1>
+          <p class="greeting-sub">Live occupancy telemetry, predictive crowd models, and smart resource optimization across your campus.</p>
+        </div>
+
+        <!-- Campus Panorama Illustration with Smooth Contrast Mask -->
+        <div class="campus-panorama-box">
+          <img src="images/building_clean.png" alt="Campus Architecture" class="campus-panorama-bg">
+          <div class="panorama-gradient-overlay"></div>
+        </div>
+      </div>
+
 
 
   <!-- ==============================================================================
@@ -176,6 +189,10 @@
       <svg class="sparkline-svg" viewBox="0 0 120 28" fill="none">
         <path d="M0,22 C25,24 40,8 70,16 C95,24 105,6 120,12" stroke="#8b5cf6" stroke-width="2.5" stroke-linecap="round"/>
       </svg>
+      <div class="card-hint-row">
+        <span>Simulate Crowd</span>
+        <i class="fa-solid fa-arrow-right"></i>
+      </div>
     </div>
 
     <!-- Card 3: Cafeteria -->
@@ -194,6 +211,10 @@
       <svg class="sparkline-svg" viewBox="0 0 120 28" fill="none">
         <path d="M0,20 C25,18 45,26 70,14 C95,4 105,18 120,14" stroke="#f97316" stroke-width="2.5" stroke-linecap="round"/>
       </svg>
+      <div class="card-hint-row">
+        <span>Meal Planner</span>
+        <i class="fa-solid fa-arrow-right"></i>
+      </div>
     </div>
 
     <!-- Card 4: Library -->
@@ -212,6 +233,10 @@
       <svg class="sparkline-svg" viewBox="0 0 120 28" fill="none">
         <path d="M0,24 C20,22 45,26 70,20 C95,15 105,8 120,16" stroke="#10b981" stroke-width="2.5" stroke-linecap="round"/>
       </svg>
+      <div class="card-hint-row">
+        <span>Find Quiet Seats</span>
+        <i class="fa-solid fa-arrow-right"></i>
+      </div>
     </div>
 
     <!-- Card 5: Next Busy Period (Dark Navy) -->
@@ -490,6 +515,14 @@
     </section>
 
       <section id="tab-overview" class="tab-pane">
+        <div class="tab-breadcrumb-bar">
+          <button class="btn-breadcrumb-back" onclick="switchTab('tab-dashboard')" title="Return to Overview Dashboard">
+            <i class="fa-solid fa-arrow-left"></i> Dashboard
+          </button>
+          <span class="breadcrumb-separator">/</span>
+          <span class="breadcrumb-current">Trends & Pulse</span>
+        </div>
+
         <div class="section-hero">
           <div>
             <h1>Campus Intelligence & Resource Demand Dashboard</h1>
@@ -499,11 +532,7 @@
             <span class="quote-tag">Principle</span>
             <span>Campus Activity &rarr; Demand &rarr; Risk &rarr; Recommendation</span>
           </div>
-        
-          <button class="btn-back-dashboard" onclick="switchTab('tab-dashboard')" title="Return to Main Dashboard">
-            <i class="fa-solid fa-arrow-left"></i> Dashboard
-          </button>
-</div>
+        </div>
 
         <!-- Pulse & Core Metrics Grid -->
         <div class="grid-3">
@@ -643,6 +672,14 @@
 
 
       <section id="tab-sports" class="tab-pane">
+        <div class="tab-breadcrumb-bar">
+          <button class="btn-breadcrumb-back" onclick="switchTab('tab-dashboard')" title="Return to Overview Dashboard">
+            <i class="fa-solid fa-arrow-left"></i> Dashboard
+          </button>
+          <span class="breadcrumb-separator">/</span>
+          <span class="breadcrumb-current">Sports Complex Intelligence</span>
+        </div>
+
         <div class="section-hero">
           <div>
             <h1>Sports Complex Overcrowding Intelligence</h1>
@@ -742,11 +779,7 @@
               </div>
             </div>
           </div>
-        
-          <button class="btn-back-dashboard" onclick="switchTab('tab-dashboard')" title="Return to Main Dashboard">
-            <i class="fa-solid fa-arrow-left"></i> Dashboard
-          </button>
-</div>
+        </div>
 
         <!-- Actionable Recommendations & Explainability -->
         <div class="grid-2 mt-20">
@@ -793,6 +826,14 @@
 
 
       <section id="tab-food" class="tab-pane">
+        <div class="tab-breadcrumb-bar">
+          <button class="btn-breadcrumb-back" onclick="switchTab('tab-dashboard')" title="Return to Overview Dashboard">
+            <i class="fa-solid fa-arrow-left"></i> Dashboard
+          </button>
+          <span class="breadcrumb-separator">/</span>
+          <span class="breadcrumb-current">Cafeteria Demand (SDG 12)</span>
+        </div>
+
         <div class="section-hero">
           <div>
             <h1>Food Outlets Demand Planning & Waste Prevention</h1>
@@ -884,6 +925,14 @@
 
 
       <section id="tab-library" class="tab-pane">
+        <div class="tab-breadcrumb-bar">
+          <button class="btn-breadcrumb-back" onclick="switchTab('tab-dashboard')" title="Return to Overview Dashboard">
+            <i class="fa-solid fa-arrow-left"></i> Dashboard
+          </button>
+          <span class="breadcrumb-separator">/</span>
+          <span class="breadcrumb-current">Library & Study Spaces</span>
+        </div>
+
         <div class="section-hero">
           <div>
             <h1>Library & Study Space Demand Analysis</h1>
@@ -979,6 +1028,14 @@
 
 
       <section id="tab-flow" class="tab-pane">
+        <div class="tab-breadcrumb-bar">
+          <button class="btn-breadcrumb-back" onclick="switchTab('tab-dashboard')" title="Return to Overview Dashboard">
+            <i class="fa-solid fa-arrow-left"></i> Dashboard
+          </button>
+          <span class="breadcrumb-separator">/</span>
+          <span class="breadcrumb-current">Campus Demand Flow Network</span>
+        </div>
+
         <div class="section-hero">
           <div>
             <h1>Campus Demand Flow & Interconnections</h1>
@@ -1056,6 +1113,14 @@
 
 
       <section id="tab-clustering" class="tab-pane">
+        <div class="tab-breadcrumb-bar">
+          <button class="btn-breadcrumb-back" onclick="switchTab('tab-dashboard')" title="Return to Overview Dashboard">
+            <i class="fa-solid fa-arrow-left"></i> Dashboard
+          </button>
+          <span class="breadcrumb-separator">/</span>
+          <span class="breadcrumb-current">Routine Clustering & PCA</span>
+        </div>
+
         <div class="section-hero">
           <div>
             <h1>Campus Activity Patterns (K-Means + PCA)</h1>
@@ -1088,11 +1153,7 @@
               Evaluated using Euclidean distance over standardized multi-facility features. Highest silhouette coefficient validates K=3 distinct operational regimes.
             </div>
           </div>
-        
-          <button class="btn-back-dashboard" onclick="switchTab('tab-dashboard')" title="Return to Main Dashboard">
-            <i class="fa-solid fa-arrow-left"></i> Dashboard
-          </button>
-</div>
+        </div>
 
         <!-- Qualitative Cluster Profiles -->
         <div class="card mt-20">
@@ -1109,16 +1170,20 @@
 
 
       <section id="tab-statistics" class="tab-pane">
+        <div class="tab-breadcrumb-bar">
+          <button class="btn-breadcrumb-back" onclick="switchTab('tab-dashboard')" title="Return to Overview Dashboard">
+            <i class="fa-solid fa-arrow-left"></i> Dashboard
+          </button>
+          <span class="breadcrumb-separator">/</span>
+          <span class="breadcrumb-current">Statistical Analysis & Hypothesis Tests</span>
+        </div>
+
         <div class="section-hero">
           <div>
             <h1>Exploratory Data Analysis & Statistical Testing</h1>
             <p>Rigorous descriptive statistics, IQR outlier investigation, Pearson/Spearman correlations, and formal hypothesis tests.</p>
           </div>
-        
-          <button class="btn-back-dashboard" onclick="switchTab('tab-dashboard')" title="Return to Main Dashboard">
-            <i class="fa-solid fa-arrow-left"></i> Dashboard
-          </button>
-</div>
+        </div>
 
         <!-- Descriptive Statistics Table -->
         <div class="card">
@@ -1192,6 +1257,14 @@
 
 
       <section id="tab-models" class="tab-pane">
+        <div class="tab-breadcrumb-bar">
+          <button class="btn-breadcrumb-back" onclick="switchTab('tab-dashboard')" title="Return to Overview Dashboard">
+            <i class="fa-solid fa-arrow-left"></i> Dashboard
+          </button>
+          <span class="breadcrumb-separator">/</span>
+          <span class="breadcrumb-current">ML Benchmarks</span>
+        </div>
+
         <div class="section-hero">
           <div>
             <h1>Classical Machine Learning Model Benchmarks</h1>
@@ -1247,11 +1320,7 @@
               </table>
             </div>
           </div>
-        
-          <button class="btn-back-dashboard" onclick="switchTab('tab-dashboard')" title="Return to Main Dashboard">
-            <i class="fa-solid fa-arrow-left"></i> Dashboard
-          </button>
-</div>
+        </div>
 
         <!-- Global Feature Importance -->
         <div class="card mt-20">
@@ -1268,6 +1337,14 @@
 
 
       <section id="tab-data" class="tab-pane">
+        <div class="tab-breadcrumb-bar">
+          <button class="btn-breadcrumb-back" onclick="switchTab('tab-dashboard')" title="Return to Overview Dashboard">
+            <i class="fa-solid fa-arrow-left"></i> Dashboard
+          </button>
+          <span class="breadcrumb-separator">/</span>
+          <span class="breadcrumb-current">Dataset Explorer & Pipeline</span>
+        </div>
+
         <div class="section-hero">
           <div>
             <h1>Dataset Explorer & Methodological Transparency</h1>
@@ -1284,11 +1361,7 @@
           <div>
             <strong>Section 11 Compliance Notice:</strong> Synthetic or simulated data is strictly disclosed and labeled as <code>CALIBRATED_SIMULATION_BENCHMARK</code>. Campus IQ provides the data ingestion form below to record and append real campus sensor observations.
           </div>
-        
-          <button class="btn-back-dashboard" onclick="switchTab('tab-dashboard')" title="Return to Main Dashboard">
-            <i class="fa-solid fa-arrow-left"></i> Dashboard
-          </button>
-</div>
+        </div>
 
         <!-- Excel (.xlsx) Upload & Retraining Card -->
         <div class="card mt-20">
@@ -1537,7 +1610,7 @@
     </div>
   </div>
 
-  <script src="js/charts.js?v=7.0"></script>
-  <script src="js/app.js?v=7.0"></script>
+  <script src="js/charts.js?v=8.0"></script>
+  <script src="js/app.js?v=8.0"></script>
 </body>
 </html>

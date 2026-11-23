@@ -97,20 +97,84 @@ body {
 }
 
 /* ==============================================================================
-   1. TOP NAVIGATION BAR (SEARCH & USER CONTROLS)
+   1. TOP NAVIGATION BAR (SEARCH & BRAND CONTROLS)
    ============================================================================== */
 .top-navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
   position: relative;
   z-index: 50;
+  gap: 16px;
+}
+
+.top-nav-left {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex: 1;
+}
+
+/* Brand Logo */
+.top-nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  user-select: none;
+  text-decoration: none;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.top-nav-brand:hover {
+  transform: translateY(-1px);
+}
+
+.brand-icon-box {
+  width: 38px;
+  height: 38px;
+  background: linear-gradient(135deg, var(--purple-main) 0%, #6366f1 100%);
+  color: #ffffff;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 17px;
+  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+  flex-shrink: 0;
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 19px;
+  font-weight: 800;
+  color: var(--text-title);
+  letter-spacing: -0.4px;
+  line-height: 1.1;
+}
+
+.brand-title strong {
+  color: var(--purple-main);
+  font-weight: 900;
+}
+
+.brand-subtitle {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-muted);
+  letter-spacing: 0.1px;
 }
 
 .search-pill-box {
   position: relative;
-  width: 320px;
+  width: 340px;
+  max-width: 100%;
 }
 
 .search-pill-box i {
@@ -124,13 +188,13 @@ body {
 
 .search-pill-input {
   width: 100%;
-  height: 44px;
+  height: 42px;
   background: var(--bg-card);
   backdrop-filter: blur(16px);
   border: 1px solid var(--border-card);
   border-radius: var(--radius-pill);
-  padding: 0 20px 0 46px;
-  font-size: 13.5px;
+  padding: 0 20px 0 44px;
+  font-size: 13px;
   color: var(--text-title);
   outline: none;
   box-shadow: var(--shadow-card);
@@ -165,12 +229,60 @@ body.dark-mode .search-shortcut-badge {
 .top-nav-right {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
+}
+
+/* Nav Telemetry Status Chip */
+.nav-status-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 14px;
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  border-radius: var(--radius-pill);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--green-dark);
+  white-space: nowrap;
+}
+
+body.dark-mode .nav-status-chip {
+  background: rgba(16, 185, 129, 0.18);
+  border-color: rgba(16, 185, 129, 0.35);
+  color: #34d399;
+}
+
+/* Nav Quick Refresh Button */
+.nav-refresh-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 14px;
+  background: var(--bg-card);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-pill);
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--text-body);
+  cursor: pointer;
+  box-shadow: var(--shadow-card);
+  transition: var(--transition);
+  font-family: inherit;
+  white-space: nowrap;
+}
+
+.nav-refresh-btn:hover {
+  background: var(--bg-card-hover);
+  color: var(--purple-main);
+  border-color: var(--purple-border);
+  transform: translateY(-1px);
 }
 
 /* Theme Toggle Pill */
 .theme-toggle-pill {
-  width: 64px;
+  width: 60px;
   height: 34px;
   background: var(--bg-card);
   border: 1px solid var(--border-card);
@@ -181,6 +293,7 @@ body.dark-mode .search-shortcut-badge {
   cursor: pointer;
   box-shadow: var(--shadow-card);
   position: relative;
+  flex-shrink: 0;
 }
 
 .theme-toggle-slider {
@@ -198,71 +311,77 @@ body.dark-mode .search-shortcut-badge {
 }
 
 body.dark-mode .theme-toggle-slider {
-  transform: translateX(30px);
+  transform: translateX(26px);
   background: #1e293b;
   color: #38bdf8;
 }
 
-/* Notification Button */
-.notif-btn {
-  width: 40px;
-  height: 40px;
+/* Breadcrumbs in Deep-Dive Tabs */
+.tab-breadcrumb-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+  font-size: 13px;
+}
+
+.btn-breadcrumb-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
   background: var(--bg-card);
   border: 1px solid var(--border-card);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 15px;
+  border-radius: var(--radius-pill);
   color: var(--text-muted);
+  font-size: 12px;
+  font-weight: 600;
   cursor: pointer;
-  position: relative;
-  box-shadow: var(--shadow-card);
   transition: var(--transition);
+  font-family: inherit;
 }
 
-.notif-btn:hover {
-  transform: scale(1.05);
+.btn-breadcrumb-back:hover {
+  background: var(--bg-card-solid);
+  color: var(--purple-main);
+  border-color: var(--purple-border);
+  transform: translateX(-2px);
+}
+
+.breadcrumb-separator {
+  color: var(--text-dim);
+  font-weight: 400;
+}
+
+.breadcrumb-current {
   color: var(--text-title);
-}
-
-.notif-badge {
-  position: absolute;
-  top: 1px;
-  right: 1px;
-  width: 17px;
-  height: 17px;
-  background: #ef4444;
-  color: #fff;
-  border-radius: 50%;
-  font-size: 10px;
-  font-weight: 800;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 2px solid #fff;
-}
-
-/* User Avatar */
-.user-avatar-pill {
-  width: 42px;
-  height: 42px;
-  background: #111827;
-  color: #ffffff;
-  border-radius: 50%;
-  font-family: 'Outfit', sans-serif;
-  font-size: 14px;
   font-weight: 700;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  box-shadow: 0 4px 12px rgba(17, 24, 39, 0.2);
-  transition: var(--transition);
 }
 
-.user-avatar-pill:hover {
-  transform: scale(1.06);
+/* Card Hint Row for Clickable Facility Cards */
+.card-hint-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px dashed rgba(0, 0, 0, 0.08);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-muted);
+  transition: color 0.2s;
+}
+
+body.dark-mode .card-hint-row {
+  border-top-color: rgba(255, 255, 255, 0.08);
+}
+
+.facility-metric-card {
+  cursor: pointer;
+}
+
+.facility-metric-card:hover .card-hint-row {
+  color: var(--purple-main);
 }
 
 /* ==============================================================================
