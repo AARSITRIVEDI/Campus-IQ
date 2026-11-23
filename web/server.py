@@ -294,10 +294,30 @@ class CampusIQRequestHandler(SimpleHTTPRequestHandler):
 
         self._send_json({"error": "Endpoint not found"}, 404)
 
+class ReusableHTTPServer(HTTPServer):
+    allow_reuse_address = True
+
 def run_server(port=8090):
     load_system_artifacts()
-    server_address = ("", port)
-    httpd = HTTPServer(server_address, CampusIQRequestHandler)
+    max_tries = 10
+    httpd = None
+    for attempt in range(max_tries):
+        target_port = port + attempt
+        try:
+            server_address = ("", target_port)
+            httpd = ReusableHTTPServer(server_address, CampusIQRequestHandler)
+            port = target_port
+            break
+        except OSError as e:
+            if e.errno == 48:
+                print(f"[Server] Port {target_port} is already in use. Trying port {target_port + 1}...")
+                continue
+            raise e
+
+    if not httpd:
+        print(f"[Server] Could not bind to an available port starting from {port}.")
+        return
+
     print(f"\n=======================================================")
     print(f" Campus IQ Web Server running at: http://localhost:{port}")
     print(f" Open http://localhost:{port} in your browser to view dashboard")

@@ -9,7 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <script src="js/chart.umd.min.js"></script>
-  <link rel="stylesheet" href="css/style.css?v=6.0">
+  <link rel="stylesheet" href="css/style.css?v=7.0">
 </head>
 <body>
 
@@ -49,51 +49,71 @@
        ============================================================================== -->
   <section class="hero-greeting-container">
     <div class="greeting-text-wrap">
+      <div class="greeting-badge-row">
+        <span class="live-status-chip">
+          <span class="live-dot-pulsing"></span> Campus IQ &bull; Live Telemetry
+        </span>
+        <span class="sdg-mini-chip sdg-11-chip" title="Aligned with UN SDG 11: Sustainable Cities & Communities">
+          <i class="fa-solid fa-city"></i> SDG 11
+        </span>
+        <span class="sdg-mini-chip sdg-12-chip" title="Aligned with UN SDG 12: Responsible Consumption & Waste Reduction">
+          <i class="fa-solid fa-infinity"></i> SDG 12
+        </span>
+      </div>
       <h1 id="greeting-title">Good Evening, Aarsi! 👋</h1>
-      <p>Here's what's happening across your campus today.</p>
+      <p class="greeting-sub">Here's your real-time campus activity, congestion forecasts, and study space availability.</p>
     </div>
 
-    <!-- Campus Panorama Illustration & SDG Badges -->
+    <!-- Campus Panorama Illustration with Smooth Contrast Mask -->
     <div class="campus-panorama-box">
       <img src="images/building_clean.png" alt="Campus Architecture" class="campus-panorama-bg">
+      <div class="panorama-gradient-overlay"></div>
     </div>
   </section>
 
-
   <!-- ==============================================================================
-       MULTI-FEATURE NAVIGATION BAR (ALL 9 MODULES + DASHBOARD)
+       MULTI-FEATURE NAVIGATION BAR (CORE CAMPUS HUB & PROJECT DETAILS)
        ============================================================================== -->
-  <nav class="feature-nav-bar">
-    <button class="feature-nav-pill active" data-tab="tab-dashboard" title="Luminous Campus Overview Dashboard">
-      <i class="fa-solid fa-house"></i> Dashboard
-    </button>
-    <button class="feature-nav-pill" data-tab="tab-overview" title="Campus Pulse & Multi-Facility Demand Trends">
-      <i class="fa-solid fa-gauge-high"></i> Trends & Pulse
-    </button>
-    <button class="feature-nav-pill" data-tab="tab-sports" title="Sports Complex Overcrowding Intelligence">
-      <i class="fa-solid fa-dumbbell"></i> Sports Complex <span class="nav-mini-badge">Core ML</span>
-    </button>
-    <button class="feature-nav-pill" data-tab="tab-food" title="Cafeteria & Dining Hall Waste Prevention (SDG 12)">
-      <i class="fa-solid fa-utensils"></i> Food Outlets (SDG 12)
-    </button>
-    <button class="feature-nav-pill" data-tab="tab-library" title="Library Study Space Availability & Exam Crunch">
-      <i class="fa-solid fa-book-open"></i> Library & Study
-    </button>
-    <button class="feature-nav-pill" data-tab="tab-flow" title="Cross-Facility Demand Flow & Dynamics">
-      <i class="fa-solid fa-arrows-split-up-and-left"></i> Demand Flow
-    </button>
-    <button class="feature-nav-pill" data-tab="tab-clustering" title="K-Means Routine Clustering & 2D PCA">
-      <i class="fa-solid fa-circle-nodes"></i> K-Means + PCA
-    </button>
-    <button class="feature-nav-pill" data-tab="tab-statistics" title="Hypothesis Testing, Welch t-tests & Statistical EDA">
-      <i class="fa-solid fa-chart-line"></i> Statistical EDA
-    </button>
-    <button class="feature-nav-pill" data-tab="tab-models" title="Classical Machine Learning Benchmarks & MDI Importance">
-      <i class="fa-solid fa-brain"></i> ML Benchmarks
-    </button>
-    <button class="feature-nav-pill" data-tab="tab-data" title="Excel Ingestion, Data Pipeline & Raw Logs">
-      <i class="fa-solid fa-database"></i> Dataset & Excel
-    </button>
+  <nav class="feature-nav-bar" aria-label="Campus IQ Navigation">
+    <div class="nav-group-section">
+      <span class="nav-group-label">Daily Campus Hub</span>
+      <button class="feature-nav-pill active" data-tab="tab-dashboard" title="Main Visual Overview Dashboard">
+        <i class="fa-solid fa-house"></i> Dashboard
+      </button>
+      <button class="feature-nav-pill" data-tab="tab-sports" title="Sports Complex Overcrowding Intelligence">
+        <i class="fa-solid fa-dumbbell"></i> Sports Complex
+      </button>
+      <button class="feature-nav-pill" data-tab="tab-food" title="Cafeteria & Dining Hall Waste Prevention (SDG 12)">
+        <i class="fa-solid fa-utensils"></i> Cafeteria (SDG 12)
+      </button>
+      <button class="feature-nav-pill" data-tab="tab-library" title="Library Study Space Availability & Quiet Hours">
+        <i class="fa-solid fa-book-open"></i> Library & Study
+      </button>
+    </div>
+
+    <div class="nav-divider"></div>
+
+    <div class="nav-group-section">
+      <span class="nav-group-label">Project Details & Faculty ML</span>
+      <button class="feature-nav-pill" data-tab="tab-overview" title="Campus Pulse & Multi-Facility Demand Trends">
+        <i class="fa-solid fa-gauge-high"></i> Trends & Pulse
+      </button>
+      <button class="feature-nav-pill" data-tab="tab-flow" title="Cross-Facility Demand Flow & Transitions">
+        <i class="fa-solid fa-arrows-split-up-and-left"></i> Demand Flow
+      </button>
+      <button class="feature-nav-pill" data-tab="tab-clustering" title="K-Means Routine Clustering & 2D PCA">
+        <i class="fa-solid fa-circle-nodes"></i> Clusters & PCA
+      </button>
+      <button class="feature-nav-pill" data-tab="tab-statistics" title="Hypothesis Testing, Welch t-tests & Statistical EDA">
+        <i class="fa-solid fa-chart-line"></i> Statistical EDA
+      </button>
+      <button class="feature-nav-pill" data-tab="tab-models" title="Classical Machine Learning Benchmarks & MDI Importance">
+        <i class="fa-solid fa-brain"></i> ML Benchmarks
+      </button>
+      <button class="feature-nav-pill" data-tab="tab-data" title="Excel Ingestion, Data Pipeline & Raw Logs">
+        <i class="fa-solid fa-database"></i> Dataset & Pipeline
+      </button>
+    </div>
   </nav>
 
   <!-- Main Viewport for Tab Panes -->
@@ -147,10 +167,10 @@
           <div class="facility-icon-circle icon-purple">
             <i class="fa-solid fa-dumbbell"></i>
           </div>
-          <span class="facility-name">Sports</span>
+          <span class="facility-name">Sports Complex</span>
         </div>
         <div class="facility-main-val" id="card-sports-val">78%</div>
-        <div class="facility-load-text" id="card-sports-status">High Load</div>
+        <div class="facility-load-text" id="card-sports-status">High Activity</div>
       </div>
       <!-- Purple Sparkline Wave -->
       <svg class="sparkline-svg" viewBox="0 0 120 28" fill="none">
@@ -165,10 +185,10 @@
           <div class="facility-icon-circle icon-orange">
             <i class="fa-solid fa-utensils"></i>
           </div>
-          <span class="facility-name">Cafeteria</span>
+          <span class="facility-name">Campus Cafeteria</span>
         </div>
         <div class="facility-main-val" id="card-food-val">65%</div>
-        <div class="facility-load-text" id="card-food-status">Moderate</div>
+        <div class="facility-load-text" id="card-food-status">Moderate Load</div>
       </div>
       <!-- Orange Sparkline Wave -->
       <svg class="sparkline-svg" viewBox="0 0 120 28" fill="none">
@@ -183,10 +203,10 @@
           <div class="facility-icon-circle icon-green">
             <i class="fa-solid fa-book-open"></i>
           </div>
-          <span class="facility-name">Library</span>
+          <span class="facility-name">Main Library</span>
         </div>
         <div class="facility-main-val" id="card-lib-val">32%</div>
-        <div class="facility-load-text" id="card-lib-status">Low Load</div>
+        <div class="facility-load-text" id="card-lib-status">Plenty of Seats</div>
       </div>
       <!-- Green Sparkline Wave -->
       <svg class="sparkline-svg" viewBox="0 0 120 28" fill="none">
@@ -194,12 +214,12 @@
       </svg>
     </div>
 
-    <!-- Card 5: Current Activity (Dark Navy) -->
+    <!-- Card 5: Next Busy Period (Dark Navy) -->
     <div class="glass-card dark-activity-card">
       <div class="activity-info-side">
-        <span class="card-title-sm"><i class="fa-solid fa-bolt"></i> Current Activity</span>
-        <div class="activity-headline">Peak Hours<br><span style="font-weight: 500; font-size: 13.5px; color: #cbd5e1;">in Sports & Cafeteria</span></div>
-        <div class="activity-next-peak">Next peak around 6 PM</div>
+        <span class="card-title-sm"><i class="fa-solid fa-bolt" style="color: #facc15;"></i> Next Busy Period</span>
+        <div class="activity-headline">Peak Hours<br><span style="font-weight: 500; font-size: 13px; color: #cbd5e1;">in Sports & Cafeteria</span></div>
+        <div class="activity-next-peak">Next peak around 6:00 PM</div>
       </div>
       <div class="clock-graphic-side">
         <!-- Elegant Animated Analog Clock Graphic -->
@@ -325,13 +345,13 @@
        ============================================================================== -->
   <section class="row-bottom-cards">
 
-    <!-- Card 9: Why did this prediction? -->
+    <!-- Card 9: Why This Prediction? -->
     <div class="glass-card prediction-why-card">
       <div>
         <div class="card-header-flex">
-          <span class="card-title-sm"><i class="fa-solid fa-sparkles" style="color: var(--blue-main);"></i> Why did this prediction? <i class="fa-regular fa-circle-question text-dim" title="Instance-level classical ML factor attribution"></i></span>
+          <span class="card-title-sm"><i class="fa-solid fa-sparkles" style="color: var(--blue-main);"></i> Why This Prediction? <i class="fa-regular fa-circle-question text-dim" title="Classical ML Feature Importance & Instance Factor Attribution"></i></span>
         </div>
-        <div class="factor-sub-note">Gym expected to be crowded due to:</div>
+        <div class="factor-sub-note">Key factors behind evening crowd forecast:</div>
 
         <!-- Factor 1 -->
         <div class="factor-bar-row">
@@ -353,7 +373,7 @@
 
         <!-- Factor 3 -->
         <div class="factor-bar-row">
-          <span class="factor-label">Friday evening</span>
+          <span class="factor-label">Friday evening schedule</span>
           <div class="factor-progress-track">
             <div class="factor-progress-fill" style="width: 15%;"></div>
           </div>
@@ -362,7 +382,7 @@
 
         <!-- Factor 4 -->
         <div class="factor-bar-row">
-          <span class="factor-label">Campus tournament</span>
+          <span class="factor-label">Campus tournament activity</span>
           <div class="factor-progress-track">
             <div class="factor-progress-fill" style="width: 10%;"></div>
           </div>
@@ -372,7 +392,7 @@
 
       <div style="text-align: right; margin-top: 10px;">
         <button class="card-action-link" onclick="switchTab('tab-sports')">
-          View Details <i class="fa-solid fa-arrow-right"></i>
+          Explore Model Factors <i class="fa-solid fa-arrow-right"></i>
         </button>
       </div>
     </div>
@@ -432,8 +452,8 @@
           </span>
         </div>
 
-        <div class="model-meta-line">Algorithm: <strong>Random Forest</strong></div>
-        <div class="model-meta-line">Accuracy: <strong>92.5%</strong></div>
+        <div class="model-meta-line">Algorithm: <strong>Random Forest (Multi-Output)</strong></div>
+        <div class="model-meta-line">Performance: <strong>92.5% Accuracy &bull; R² = 0.929</strong></div>
 
         <div class="model-grid-and-btn">
           <!-- 4x4 Confusion Matrix Heatmap Blocks -->
@@ -460,7 +480,7 @@
           </div>
 
           <button class="card-action-link" onclick="switchTab('tab-models')">
-            View Details <i class="fa-solid fa-arrow-right"></i>
+            View Full Benchmarks <i class="fa-solid fa-arrow-right"></i>
           </button>
         </div>
       </div>
@@ -1517,7 +1537,7 @@
     </div>
   </div>
 
-  <script src="js/charts.js?v=6.0"></script>
-  <script src="js/app.js?v=6.0"></script>
+  <script src="js/charts.js?v=7.0"></script>
+  <script src="js/app.js?v=7.0"></script>
 </body>
 </html>
